@@ -31,10 +31,10 @@ export class WeatherStation {
 
     insertData = (table, data, timestamp) => {
         try {
+            // fix the statement with a template string ${}
             let sql = 'INSERT INTO ' + table + ' (data, TimeStamp) VALUES (' + data.toString() + ' ,' + ' "2021-07-17 01:01:37.5" ' + ')'
             // INSERT INTO humid (data, time) VALUES ("10","2021-07-17 01:01:37.5")
             return new Promise((resolve, reject) => {
-                let test = table
                 pool.query(sql, (err, result) => {
                     if (err) { reject(err) }
                     console.log("data posted to the db\n", result)

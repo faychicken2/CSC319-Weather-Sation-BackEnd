@@ -15,6 +15,7 @@ router.get('/data', async (req, res) => {
         console.log("data: ", data)
         res.json(data)
     } catch (error) {
+        // change error code 500 to a better fitting code
         console.log("error while getting data: ", error)
         res.sendStatus(500)
     }

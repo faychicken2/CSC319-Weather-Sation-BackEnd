@@ -5,7 +5,6 @@ const router = express.Router();
 
 let db = new WeatherStation()
 
-//TODO: Fix this. what is wrong? IDK
 router.post('/data', (req, res) => {
     // array of sensors
     let sensors = db.sensors
@@ -42,8 +41,6 @@ router.post('/data', (req, res) => {
    if (driver == true) {
        // going through the posted data (body)
        for (let x in req.body) {
-            console.log("got here")
-
             // checking in the sensor data in the body
             for (let i in sensors) {
 
