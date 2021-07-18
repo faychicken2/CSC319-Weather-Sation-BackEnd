@@ -14,6 +14,11 @@ pool.connect(function (err) {
 
 export class WeatherStation {
 
+    constructor(sensors) {
+    
+        this.sensors = ["humid", "temp", "bmp"] // the sensors that we accept
+     }
+
     insertHumid = (table, data, timestamp) => {
         try {
             let sql = 'INSERT INTO ' + table + ' (data, TimeStamp) VALUES (' + data.toString() + ' ,' + ' "2021-07-17 01:01:37.5" ' + ')'
@@ -28,28 +33,28 @@ export class WeatherStation {
             })
 
         } catch (error) {
-            console.log("error on insertHumid: ", error)
+            console.log("error on insert Humid: ", error)
         }
     }
 
     getData = (table) => {
-        let sensors = ["humid", "temp", "bmp"]
+        
         let driver = false
         try {
             return new Promise((resolve, reject) => {
 
-                for (let x in sensors) {
+                for (let x in this.sensors) {
 
                     // TODO: check to see in table is in the sensors
                     // if it is then SELECT data from that table
                     // else if table isnt in sensors then reject the promise
-                    if (table == sensors[x]) {
+                    if (table == this.sensors[x]) {
                         pool.query(`SELECT * FROM ${table}`, (err, result) => {
                             if (err) { reject(err) }
                             resolve(result)
                         })
                     }
-                    else if (sensors.length == x) {
+                    else if (this.sensors.length == x) {
                         reject(500)
                     }
 

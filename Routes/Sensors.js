@@ -7,7 +7,7 @@ let db = new WeatherStation()
 
 router.post('/data', (req, res) => {
      // array of sensors
-     let sensors = ["humid", "temp", "bmp"]
+     let sensors = db.sensors
      let keys = [
          "b704ecf8-e793-11eb-ba80-0242ac130004",
          "b704efc8-e793-11eb-ba80-0242ac130004",
