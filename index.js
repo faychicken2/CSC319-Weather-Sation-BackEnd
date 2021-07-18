@@ -32,6 +32,7 @@ Format:
 
 
 app.use('/client', Client)
+app.use('/sensor', Sensors)
 
 app.post('/data', (req, res) => {
     // array of sensors

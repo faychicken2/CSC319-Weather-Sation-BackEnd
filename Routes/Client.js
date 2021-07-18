@@ -12,6 +12,7 @@ let db = new WeatherStation()
 router.get('/data', async (req, res) => {
     try {
         let data = await db.getData("temp")
+        console.log("data: ", data)
         res.json(data)
     } catch (error) {
         console.log("error while getting data: ", error)
