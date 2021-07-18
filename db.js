@@ -33,21 +33,3 @@ export default class WeatherStation {
     }
 }
 
-// CreateNewTicket = (reqTicket) => {
-//     //
-//     //creating new promise
-//     try {
-//         return new Promise((resolve, reject) => {
-//             // creating the query from the db
-//             pool.query(`INSERT INTO ticket (FK_Ticket_SLA, FK_Ticket_Priority, FK_Emplyee, FK_Ticket_Status, FK_Client_Location, Issue_Summary, Created) VALUES (?,?,?,?, ?,?,?)`, [reqTicket.slaFK, reqTicket.priorityFK, reqTicket.employeeFK, reqTicket.slaFK, reqTicket.locationsFK, reqTicket.issueSummary, new Date()], (err, result) => {
-//                 if (err) { 
-//                     reject (err)
-//                     console.log("Error: ", err)
-//                 }
-//                 return resolve(result);
-//             })
-//         });
-//     } catch (error) {
-//         console.error(error)
-//     }
-// }

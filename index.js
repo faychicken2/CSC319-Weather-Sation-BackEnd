@@ -12,7 +12,19 @@ app.use(express.json())
 let db = new WeatherStation();
 
 /**
- *  format is {"sensorName": }
+Format:
+    {
+        "humid": {
+            "data": 25,
+            "time": "time"
+        },
+
+        "temp": {
+            "data": 85,
+            "time": "time"
+        }
+
+    }
  */
 
 app.get('/data', (req, res) => {
@@ -57,45 +69,3 @@ app.post('/data', (req, res) => {
 app.listen(port, () => {
     console.log(`server is running on PORT ${port}`)
 })
-
-
-
-
-
-
-
-
-
-
-// app.get('/', (req, res) => {
-//     res.json(data)
-// })
-
-// app.get('/temp', (req, res) => {
-//     res.json(data)
-// })
-
-// app.get('/humid', (req, res) => {
-//     res.json(data)
-// })
-
-// app.post('/', (req, res) => {
-//     let postedData = req.body
-//     data.push(postedData)
-//     console.log("POSTED", postedData)
-//     res.json(postedData)
-// })
-
-// app.post('/temp', (req, res) => {
-//     let postedData = req.body
-//     data.push(postedData)
-//     console.log("POSTED", postedData)
-//     res.json(postedData)
-// })
-
-// app.post('/humid', (req, res) => {
-//     let postedData = req.body
-//     data.push(postedData)
-//     console.log("POSTED", postedData)
-//     res.json(postedData)
-// })
