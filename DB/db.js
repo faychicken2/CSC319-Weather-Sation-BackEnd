@@ -14,9 +14,19 @@ pool.connect(function (err) {
 
 export class WeatherStation {
 
-    constructor(sensors) {
+    constructor(sensors, keys) {
     
         this.sensors = ["humid", "temp", "bmp"] // the sensors that we accept
+        this.keys = [
+            "b704ecf8-e793-11eb-ba80-0242ac130004",
+            "b704efc8-e793-11eb-ba80-0242ac130004",
+            "b704f2fc-e793-11eb-ba80-0242ac130004",
+            "b704f3ce-e793-11eb-ba80-0242ac130004",
+            "b704f48c-e793-11eb-ba80-0242ac130004",
+            "b704f842-e793-11eb-ba80-0242ac130004",
+            "b704f914-e793-11eb-ba80-0242ac130004",
+            "b704f9c8-e793-11eb-ba80-0242ac130004"
+        ]
      }
 
     insertHumid = (table, data, timestamp) => {

@@ -6,9 +6,9 @@ const router = express.Router();
 let db = new WeatherStation()
 
  //TODO:
- // res data by what is requested in body
- // if temp and humid is in the body return everything in the table
- // if temp is in body then just return everything in the table
+ // return data by what is requested in body
+ // if temp and humid is in the body return everything in the tables temp and humid
+ // if temp is in body then just return everything in the table temp
 router.get('/data', async (req, res) => {
     try {
         let data = await db.getData("temp")
