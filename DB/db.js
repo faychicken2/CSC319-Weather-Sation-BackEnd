@@ -40,6 +40,9 @@ export class WeatherStation {
      */
     insertData = (table, data, timestamp, station) => {
         try {
+            // fix the statement with a template string ${}
+            let sql = 'INSERT INTO ' + table + ' (data, TimeStamp) VALUES (' + data.toString() + ' ,' + ' "2021-07-17 01:01:37.5" ' + ')'
+            let test = `INSERT INTO ${table} (data, TimeStamp, idStationFK) VALUES (${data.toString()}, "2021-07-17 01:01:37.5", ${station.toString()})`
             // INSERT INTO humid (data, time) VALUES ("10","2021-07-17 01:01:37.5")
             return new Promise((resolve, reject) => {
                 pool.query(`INSERT INTO ${table} (data, TimeStamp, idStationFK) VALUES (?, ?, ?)`, [data, new Date(), station], (err, result) => {
@@ -94,12 +97,15 @@ export class WeatherStation {
 
     //TODO: check sensors in function param and check if they are in the approved list
     getToday = (station, sensor) => {
+        console.log(typeof sensor)
         try {
             return new Promise((resolve, reject) => {
                 let temp = new Date()
-                let date = temp.getFullYear() + "-" + ('0' + (temp.getMonth() + 1)).slice(-2) + "-" + temp.getDate()
+                let date = temp.getFullYear() + "-" + ('0' + (temp.getMonth() + 1)).slice(-2) + "-" + ('0' + (temp.getDate() )).slice(-2)
+                let sql = `SELECT * FROM ${sensor} WHERE idStationFK = "${station}" AND TimeStamp LIKE "${date + "%"}"`
+                // `SELECT * FROM ${sensor} WHERE idStationFK = ? AND TimeStamp LIKE ?`, [ toString(station), toString(date + "%")]
 
-                pool.query(`SELECT * FROM ${sensor} WHERE idStationFK = ? AND TimeStamp LIKE ?`, [toString(station), toString(date + "%")], (err, result) => {
+                pool.query(sql, (err, result) => {
                     if (err) {
                         console.log("rejected:\n", err)
                         reject(err)

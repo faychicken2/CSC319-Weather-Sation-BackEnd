@@ -22,10 +22,29 @@ router.get('/data', async (req, res) => {
 
 })
 
-//TODO: FIX THIS
-router.get('/data/today', async (req, res) => {
-    // res.send("hello")
-    res.json(await db.getToday("b704ecf8-e793-11eb-ba80-0242ac130004", "humid"))
+/*TODO:
+    today/temp+humid
+    let t = res.params.sensors = temp+humid 
+    t.split(+)
+
+
+*/ 
+router.get('/data/today/:stationID/:sensors', async (req, res) => {
+    // let sensors = req.body.sensors
+    let t = req.params.sensors
+    let sensors = t.split("+")
+    let output = {}
+
+    for (let sen in sensors) {
+        console.log(sensors[sen])
+        let temp = await db.getToday(req.params.stationID, sensors[sen])
+        // "b704ecf8-e793-11eb-ba80-0242ac130004"
+
+        output[sensors[sen]] = temp
+         
+    }
+    res.json(output)
+
 })
 
 router.get('/data/:start/:end', (req, res) => {
