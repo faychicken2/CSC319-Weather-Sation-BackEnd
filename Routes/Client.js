@@ -22,4 +22,14 @@ router.get('/data', async (req, res) => {
 
 })
 
+//TODO: FIX THIS
+router.get('/data/today', async (req, res) => {
+    // res.send("hello")
+    res.json(await db.getToday("b704ecf8-e793-11eb-ba80-0242ac130004", "humid"))
+})
+
+router.get('/data/:start/:end', (req, res) => {
+    res.send(req.params.start + " " + req.params.end)
+})
+
 export default router

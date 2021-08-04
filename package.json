@@ -1,5 +1,5 @@
 {
-  "name": "Weather Station BackEnd",
+  "name": "Weather_Station_BackEnd",
   "version": "1.0.0",
   "description": "This is the code for the csc318 project",
   "main": "index.js",
@@ -13,7 +13,9 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mysql": "^2.18.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.12"
   }
 }

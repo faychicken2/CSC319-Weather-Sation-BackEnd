@@ -11,6 +11,8 @@ router.post('/data', (req, res) => {
     let keys = db.keys
     
     let driver = false
+
+
     // console.log(req.body.key)
     for (let key in keys) {
         if (req.body.key == keys[key]) {
@@ -18,6 +20,7 @@ router.post('/data', (req, res) => {
             driver = true
         }
     }
+
     
     
     /*
@@ -44,14 +47,17 @@ router.post('/data', (req, res) => {
             // checking in the sensor data in the body
             for (let i in sensors) {
 
-                // if the 
+                // checking if data is an accepted sensor
                 if (x == sensors[i]) {
                     console.log(x)
 
                     let senData = req.body[x].data
                     let stamp = req.body[x].time
                     try {
-                        db.insertData(x, senData, stamp)
+                        let key = req.body.key
+                        let keyStr = key.toString()
+                        console.log("key: ", typeof keyStr)
+                        db.insertData(x, senData, stamp, req.body.key.toString())
                     } catch (error) {
                         res.sendStatus(500)
                         console.log("error on post: ", error)
@@ -63,6 +69,11 @@ router.post('/data', (req, res) => {
 
     // console.log(req.body.temp)
     res.sendStatus(200)
+})
+
+router.get('/', (req, res) => {
+    console.log("here")
+    res.send("hello world")
 })
 
 export default router
