@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "24f5ef11-e4f1-4ab9-a139-20bb691cd73c",
+		"name": "CSC318",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "getting data by table",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/client/data",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"client",
+								"data"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sensors",
+			"item": [
+				{
+					"name": "post data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\": \"b704ecf8-e793-11eb-ba80-0242ac130004\",\r\n\r\n    \"humid\": {\r\n        \"data\": 55,\r\n        \"time\": \"time\"\r\n    },\r\n\r\n    \"temp\": {\r\n        \"data\": 222,\r\n        \"time\": \"time\"\r\n    }\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/sensor/data",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"sensor",
+								"data"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
